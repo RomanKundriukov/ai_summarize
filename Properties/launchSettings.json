@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "ai_summarize (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ai_summarize (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
