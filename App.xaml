@@ -3,7 +3,8 @@
     x:Class="ai_summarize.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:ai_summarize">
+    xmlns:local="using:Microsoft.UI.Xaml.Media"
+    xmlns:media="using:Microsoft.UI.Xaml.Media">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -11,6 +12,19 @@
                 <!-- Other merged dictionaries here -->
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+            <!--<ResourceDictionary.ThemeDictionaries>
+                <ResourceDictionary x:Key="Default">
+
+                    <media:AcrylicBrush
+                        x:Key="CustomAcrylicInAppLuminosity"
+                        FallbackColor="SkyBlue"
+                        TintColor="SkyBlue"
+                        TintOpacity="0" />
+                    
+                </ResourceDictionary>
+            </ResourceDictionary.ThemeDictionaries>-->
+
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
