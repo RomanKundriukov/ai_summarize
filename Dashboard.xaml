@@ -19,7 +19,7 @@
     </winuiex:WindowEx.SystemBackdrop>
 
 
-    <Frame x:Name="RootFrame"/>
+    <Frame Margin="5,35,5,5" x:Name="RootFrame"/>
 
     <!--<Grid RowSpacing="15" Margin="15,45,15,15" BackgroundSizing="OuterBorderEdge">
         <Grid.RowDefinitions>
