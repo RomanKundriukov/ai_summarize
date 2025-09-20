@@ -29,6 +29,7 @@ namespace ai_summarize
     public partial class App : Application
     {
         private Window? _window;
+        public static readonly List<Window> OpenWindows = new();
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code

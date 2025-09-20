@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<prompts>
+	<prompt>
+		<key>documentSummary</key>
+		<value>
+			Fasse den folgenden Text prägnant zusammen.\n\n### Regeln:\n- Erkenne die Sprache des Textes automatisch.\n- Erstelle die Zusammenfassung **in derselben Sprache** wie der Originaltext.\n- Konzentriere dich nur auf die wichtigsten Punkte und Kernaussagen.\n- Keine zusätzlichen Kommentare, Erklärungen oder Hinweise zur Sprache.\n- Gib die Zusammenfassung als Fließtext zurück, ohne JSON oder andere Strukturen.\n\n### Eingabetext:\n
+		</value>
+	</prompt>
+</prompts>

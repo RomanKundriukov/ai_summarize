@@ -1,3 +1,5 @@
+using ai_summarize.Model;
+using ai_summarize.Service;
 using ai_summarize.View;
 using ai_summarize.ViewModel;
 using Microsoft.UI;

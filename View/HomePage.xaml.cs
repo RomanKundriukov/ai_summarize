@@ -24,11 +24,11 @@ namespace ai_summarize.View
     /// </summary>
     public sealed partial class HomePage : Page
     {
-        private HomePageViewModel _vm;
+        private HomePageViewModel _vm { get; } = new();
         public HomePage()
         {
             InitializeComponent();
-            _vm = new HomePageViewModel();
+            this.DataContext = _vm;
         }
     }
 }

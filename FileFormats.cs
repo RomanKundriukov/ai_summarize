@@ -9,12 +9,12 @@ namespace ai_summarize
 
     enum FileFormat
     {
-        PDF,
-        DOCX,
+        //PDF,
+        //DOCX,
         TXT,
-        MD,
-        HTML,
-        XLSX,
+        //MD,
+        //HTML,
+        //XLSX,
     }
 
 }
