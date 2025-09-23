@@ -8,5 +8,10 @@ namespace ai_summarize.Service
 {
     internal class ChunkService
     {
+        internal ChunkService()
+        {
+        }
+
+        
     }
 }

@@ -4,7 +4,9 @@ using OllamaSharp.Models;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -70,6 +72,19 @@ namespace ai_summarize.Service
             }
         }
 
+        /// <summary>
+        /// Asynchronously generates a summary of the specified file text using the given language model and prompt key.
+        /// </summary>
+        /// <remarks>The summary is generated in a streaming fashion, allowing the caller to process each
+        /// segment as it becomes available. This method is intended for internal use.</remarks>
+        /// <param name="fileText">The full text content of the file to be summarized. Cannot be null or empty.</param>
+        /// <param name="modelName">The name of the language model to use for summarization. Defaults to "granite3.2:8b" if not specified.</param>
+        /// <param name="promptKey">The key identifying the prompt template to use for generating the summary. Defaults to "documentSummary" if
+        /// not specified.</param>
+        /// <returns>An asynchronous stream of strings containing segments of the generated summary. Each string represents a
+        /// portion of the summary as it is produced.</returns>
+        /// <exception cref="Exception">Thrown if the prompt associated with <paramref name="promptKey"/> is null, empty, or consists only of
+        /// white-space characters.</exception>
         internal async IAsyncEnumerable<string> SummarizeFile(string fileText, string modelName = "granite3.2:8b", string promptKey = "documentSummary")
         {
             string prompt = _promptService.GetPromptByKey(promptKey);
@@ -80,6 +95,23 @@ namespace ai_summarize.Service
                 await foreach (var stream in _ollama.GenerateAsync(new GenerateRequest
                 {
                     Model = modelName,
+                    System = "You are a helpful assistant that helps people find information.",
+                    Options = new RequestOptions()
+                    {
+
+                        NumCtx = 2048,
+                        NumPredict = 256,
+                        TopK = 40,
+                        TopP = 0.9f,
+                        RepeatPenalty = 1.1f,
+                        Stop = new string[] { "</s>", "###" },
+                        NumThread = 8,
+                        NumGpu = 1,
+                        NumBatch = 64,
+                        NumKeep = 64,
+                        Temperature = 1.0f,
+                    },
+                    //Format = "json",
                     Prompt = $"{prompt}:\n\n{fileText}",
                     Stream = true
                 }))
@@ -95,8 +127,5 @@ namespace ai_summarize.Service
 
 
         }
-
-
-
     }
 }
