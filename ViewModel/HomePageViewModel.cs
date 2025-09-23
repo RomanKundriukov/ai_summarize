@@ -186,13 +186,22 @@ namespace ai_summarize.ViewModel
             e.AcceptedOperation = DataPackageOperation.Copy;
         }
 
+        /// <summary>
+        /// Asynchronously generates a summary for the specified text file and updates the summary text state.
+        /// </summary>
+        /// <remarks>If a summary is already present, it will be cleared before generating a new one. The
+        /// summary text is updated incrementally as the file is processed. The method manages summary visibility state
+        /// during the operation.</remarks>
+        /// <param name="path">The full path to the text file to be summarized. Cannot be null or empty.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
         internal async Task CreateSummarizeOneFile(string path)
         {
+            ReadFile reader = _fileService.GetReadFileDelegate(path);
 
             if (!string.IsNullOrWhiteSpace(_summarizeText))
                 ClearSummarizeText();
 
-            string fileText = await _fileService.ReadTxtFile(path);
+            string fileText = reader(path);
 
             if (fileText.Length != 0 && fileText is not null)
             {
